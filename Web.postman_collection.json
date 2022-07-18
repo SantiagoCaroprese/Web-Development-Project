@@ -1,0 +1,668 @@
+{
+	"info": {
+		"_postman_id": "9a90247f-8f03-4963-adb1-dee8e00b3f66",
+		"name": "Web",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Employees",
+			"item": [
+				{
+					"name": "Log in",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"name@doname.com\",\r\n    \"password\":\"passname\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/employees/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"employees",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register Employee",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"employeeId\" : \"b5021e1d-8770-4d31-9055-2de2c8e8fba7\",\r\n    \"employeeEmail\":\"prueba@prueba.com\",\r\n    \"employeePassword\":\"prueba123\",\r\n    \"employeeFirstName\":\"Prueba\",\r\n    \"employeeLastName\":\"Final\",\r\n    \"employeeIsAdministrator\":false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/employees",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Employee",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/employees/b5021e1d-8770-4d31-9055-2de2c8e8fba7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"employees",
+								"b5021e1d-8770-4d31-9055-2de2c8e8fba7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Employee",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"employeeEmail\":\"prueba@prueba.com\",\r\n    \"employeePassword\":\"prueba123\",\r\n    \"employeeFirstName\":\"Prueba\",\r\n    \"employeeLastName\":\"Finales\",\r\n    \"employeeIsAdministrator\":false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/employees/b5021e1d-8770-4d31-9055-2de2c8e8fba7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"employees",
+								"b5021e1d-8770-4d31-9055-2de2c8e8fba7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Properties",
+			"item": [
+				{
+					"name": "Add Image",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"image\":\"newImage0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/properties/bb5f8ac3-b90d-40ec-b3e2-e0ca3f432731/images",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"properties",
+								"bb5f8ac3-b90d-40ec-b3e2-e0ca3f432731",
+								"images"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Property",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"propertyId\" : \"bb5f8ac3-b90d-40ec-b3e2-e0ca3f432731\",\r\n\t\"address\" : \"Calle 146a\",\r\n\t\"propertyType\" : \"casa\",\r\n\t\"city\" : \"Bogota\",\r\n\t\"description\" : \"Es una casa grande\",\r\n\t\"bedroomsNumber\" : 3,\r\n\t\"bathroomsNumber\" : 4,\r\n\t\"privateArea\" : 1000,\r\n\t\"builtArea\" : 100,\r\n\t\"serviceLevel\" : 3,\r\n\t\"condition\" : \"nuevo\",\r\n\t\"deliveryDateYear\" : 2021,\r\n\t\"deliveryDateMonth\" : 5,\r\n\t\"deliveryDateDay\" : 11,\r\n\t\"latitude\" : 4.570868,\r\n\t\"longitude\" : -74.297333\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/properties",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"properties"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Image",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/properties/bb5f8ac3-b90d-40ec-b3e2-e0ca3f432731/images/0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"properties",
+								"bb5f8ac3-b90d-40ec-b3e2-e0ca3f432731",
+								"images",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Property",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/properties/bb5f8ac3-b90d-40ec-b3e2-e0ca3f432731",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"properties",
+								"bb5f8ac3-b90d-40ec-b3e2-e0ca3f432731"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Property",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"address\" : \"Calle 147b\",\r\n\t\"propertyType\" : \"casa\",\r\n\t\"city\" : \"Bogota\",\r\n\t\"description\" : \"Es una casa grande y bonita\",\r\n\t\"bedroomsNumber\" : 3,\r\n\t\"bathroomsNumber\" : 3,\r\n\t\"privateArea\" : 1000,\r\n\t\"builtArea\" : 100,\r\n\t\"serviceLevel\" : 4,\r\n\t\"condition\" : \"nuevo\",\r\n\t\"deliveryDateYear\" : 2021,\r\n\t\"deliveryDateMonth\" : 5,\r\n\t\"deliveryDateDay\" : 11,\r\n\t\"latitude\" : 4.570868,\r\n\t\"longitude\" : -74.297333\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/properties/bb5f8ac3-b90d-40ec-b3e2-e0ca3f432731",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"properties",
+								"bb5f8ac3-b90d-40ec-b3e2-e0ca3f432731"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter Property",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/properties?propertyType=casa&priceLowerLimit=0&priceUpperLimit=10000000&city=Bogota&bedRoomsNumber=1&bathRoomNumber=2&action=SALE&propertyCondition=nuevo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"properties"
+							],
+							"query": [
+								{
+									"key": "propertyType",
+									"value": "casa"
+								},
+								{
+									"key": "priceLowerLimit",
+									"value": "0"
+								},
+								{
+									"key": "priceUpperLimit",
+									"value": "10000000"
+								},
+								{
+									"key": "city",
+									"value": "Bogota"
+								},
+								{
+									"key": "bedRoomsNumber",
+									"value": "1"
+								},
+								{
+									"key": "bathRoomNumber",
+									"value": "2"
+								},
+								{
+									"key": "action",
+									"value": "SALE"
+								},
+								{
+									"key": "propertyCondition",
+									"value": "nuevo"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Property",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/properties/bb5f8ac3-b90d-40ec-b3e2-e0ca3f432731",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"properties",
+								"bb5f8ac3-b90d-40ec-b3e2-e0ca3f432731"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Offer",
+			"item": [
+				{
+					"name": "Add Offer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"offerId\" : \"4a229224-759d-4234-8871-ef352ca516cf\",\r\n    \"price\" : 1500000,\r\n    \"action\" : \"SALE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/properties/bb5f8ac3-b90d-40ec-b3e2-e0ca3f432731/offers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"properties",
+								"bb5f8ac3-b90d-40ec-b3e2-e0ca3f432731",
+								"offers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delet Offer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/properties/bb5f8ac3-b90d-40ec-b3e2-e0ca3f432731/offers/4a229224-759d-4234-8871-ef352ca516cf",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"properties",
+								"bb5f8ac3-b90d-40ec-b3e2-e0ca3f432731",
+								"offers",
+								"4a229224-759d-4234-8871-ef352ca516cf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eddit Offer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"price\":14000000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/properties/bb5f8ac3-b90d-40ec-b3e2-e0ca3f432731/offers/4a229224-759d-4234-8871-ef352ca516cf",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"properties",
+								"bb5f8ac3-b90d-40ec-b3e2-e0ca3f432731",
+								"offers",
+								"4a229224-759d-4234-8871-ef352ca516cf"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Appointments",
+			"item": [
+				{
+					"name": "Assign Appontments",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/appointments/53063fc3-2e4e-46fa-9722-3285ce562209",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"appointments",
+								"53063fc3-2e4e-46fa-9722-3285ce562209"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book Appointment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"appointmentId\": \"53063fc3-2e4e-46fa-9722-3285ce562209\",\r\n    \"propertyId\" : \"bb5f8ac3-b90d-40ec-b3e2-e0ca3f432731\",\r\n    \"year\": 2021,\r\n    \"month\": 6,\r\n    \"day\": 18,\r\n    \"hour\": 18,\r\n    \"minute\": 45,\r\n    \"customerFirstName\": \"Mr\",\r\n    \"customerLastName\": \"Test\",\r\n    \"customerEmail\": \"testtt@example.com\",\r\n    \"customerPhoneNumber\": 1234567\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/appointments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"appointments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Appointment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/appointments/53063fc3-2e4e-46fa-9722-3285ce562209",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"appointments",
+								"53063fc3-2e4e-46fa-9722-3285ce562209"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Expired Appoinmet",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/appointments/expired",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"appointments",
+								"expired"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Assigned Appointments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/appointments/assigned",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"appointments",
+								"assigned"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Unassigned Appointments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/appointments/unassigned",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"appointments",
+								"unassigned"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Questions",
+			"item": [
+				{
+					"name": "Submit Answer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\": \"la respuesta\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/questions/4e60f77f-bb6b-408f-9ec9-36094f9aede7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"questions",
+								"4e60f77f-bb6b-408f-9ec9-36094f9aede7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Submit Question",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"questionId\": \"4e60f77f-bb6b-408f-9ec9-36094f9aede7\",\r\n    \"propertyId\": \"bb5f8ac3-b90d-40ec-b3e2-e0ca3f432731\",\r\n    \"text\": \"esto es una pregunta\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/questions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"questions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Unanswered Questions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/questions/unanswered",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"questions",
+								"unanswered"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJyZWFsRXN0YXRlQXBwVG9rZW4iLCJzdWIiOiIzMDIzNDc2Yy00Yjk4LTQ2NTktODNhZC05ZDkwM2QxMjI0ZGQiLCJhdXRob3JpdGllcyI6WyJST0xFX0VNUExPWUVFIiwiUk9MRV9BRE1JTiJdLCJpYXQiOjE2MjA2OTAwNDIsImV4cCI6MTYyMDY5MTg0Mn0.y2hdPDyqWNzys1khZXizCVSrhcDTNAr8Tz_HfPI6-htqpiCpma2GTqqnu70t0OY3tDdldPLuiQNLLmsB1AyS5g",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "Authorization",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

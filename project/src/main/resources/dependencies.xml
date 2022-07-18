@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="JWTTokenGenerator" class="com.javeriana.web.project.Employees.Employee.Infrastructure.Security.JWTTokenGenerator"/>
+
+    <bean id="hibernateEmployeeRepository" class="com.javeriana.web.project.Employees.Employee.Infrastructure.Hibernate.HibernateEmployeeRepository"/>
+
+    <bean id="springApplicationEventBus" class="com.javeriana.web.project.Shared.Infrastructure.Bus.Event.Spring.SpringApplicationEventBus"/>
+
+    <bean id="EmployeeLogin" class="com.javeriana.web.project.Employees.Employee.Application.Login.EmployeeLogin">
+        <constructor-arg ref="JWTTokenGenerator"/>
+        <constructor-arg ref="hibernateEmployeeRepository"/>
+    </bean>
+
+    <bean id="employeeFinder" class="com.javeriana.web.project.Employees.Employee.Application.Find.EmployeeFinder">
+        <constructor-arg ref="hibernateEmployeeRepository"/>
+    </bean>
+
+    <bean id="employeeCreator" class="com.javeriana.web.project.Employees.Employee.Application.Create.EmployeeCreator">
+        <constructor-arg ref="hibernateEmployeeRepository"/>
+    </bean>
+
+    <bean id="employeeModifier" class="com.javeriana.web.project.Employees.Employee.Application.Update.EmployeeModifier">
+        <constructor-arg ref="hibernateEmployeeRepository"/>
+    </bean>
+
+    <bean id="employeesObtainer" class="com.javeriana.web.project.Employees.Employee.Application.GetAll.EmployeesObtainer">
+        <constructor-arg ref="hibernateEmployeeRepository"/>
+    </bean>
+    
+    <bean id ="hibernatePropertyRepository" class="com.javeriana.web.project.Properties.Property.Infrastructure.hibernate.HibernatePropertyRepository"/>
+
+    <bean id="propertyFinder" class="com.javeriana.web.project.Properties.Property.Application.Find.PropertyFinder">
+        <constructor-arg ref="hibernatePropertyRepository"/>
+    </bean>
+
+    <bean id="propertyCreator" class="com.javeriana.web.project.Properties.Property.Application.Create.PropertyCreator">
+        <constructor-arg ref="hibernatePropertyRepository"/>
+    </bean>
+
+    <bean id="propertyDeleter" class="com.javeriana.web.project.Properties.Property.Application.Delete.PropertyDeleter">
+        <constructor-arg ref="hibernatePropertyRepository"/>
+        <constructor-arg ref="springApplicationEventBus"/>
+    </bean>
+
+    <bean id="propertyModifier" class="com.javeriana.web.project.Properties.Property.Application.Update.PropertyModifier">
+        <constructor-arg ref="hibernatePropertyRepository"/>
+        <constructor-arg ref="springApplicationEventBus"/>
+    </bean>
+
+    <bean id="imageAdditionner" class="com.javeriana.web.project.Properties.Property.Application.AddImage.ImageAdditive">
+        <constructor-arg ref="hibernatePropertyRepository"/>
+    </bean>
+
+    <bean id="imageDeleter" class="com.javeriana.web.project.Properties.Property.Application.DeleteImage.ImageDeleter">
+        <constructor-arg ref="hibernatePropertyRepository"/>
+    </bean>
+
+    <bean id ="HibernateAppointmentRepository" class="com.javeriana.web.project.Appointments.Appointment.Infrastructure.Hibernate.HibernateAppointmentRepository"/>
+
+
+    <bean id="UnassignedAppointmentsGetter" class="com.javeriana.web.project.Appointments.Appointment.Application.Unassigned.UnassignedAppointmentsGetter">
+        <constructor-arg ref="HibernateAppointmentRepository"/>
+    </bean>
+
+
+
+    <bean id="EmployeeDeleter" class="com.javeriana.web.project.Employees.Employee.Application.DeleteEmployee.EmployeeDeleter">
+        <constructor-arg ref="hibernateEmployeeRepository"/>
+        <constructor-arg ref="springApplicationEventBus"/>
+    </bean>
+    <bean id="appointmentBooker" class="com.javeriana.web.project.Appointments.Appointment.Application.Book.AppointmentBooker">
+        <constructor-arg ref="HibernateAppointmentRepository"/>
+        <constructor-arg ref="propertyFinder"/>
+    </bean>
+
+    <bean id="appointmentsDeleter" class="com.javeriana.web.project.Appointments.Appointment.Application.Delete.AppointmentsDeleter">
+        <constructor-arg ref="HibernateAppointmentRepository"/>
+    </bean>
+
+    <bean id="appointmentModifier" class="com.javeriana.web.project.Appointments.Appointment.Application.Update.AppointmentModifier">
+        <constructor-arg ref="HibernateAppointmentRepository"/>
+    </bean>
+
+    <bean id="updateAppointmentOnPropertyModifier" class="com.javeriana.web.project.Appointments.Appointment.Infrastructure.DomainEventSubscribers.UpdateAppointmentOnPropertyModifier">
+        <constructor-arg ref="appointmentModifier"/>
+    </bean>
+
+    <bean id="deleteAppointmentOnPropertyDeleter" class="com.javeriana.web.project.Appointments.Appointment.Infrastructure.DomainEventSubscribers.DeleteAppointmentOnPropertyDeleter">
+        <constructor-arg ref="appointmentsDeleter"/>
+    </bean>
+
+    <bean id="expiredAppointmentsDeleter" class="com.javeriana.web.project.Appointments.Appointment.Application.DeleteExpiredAppointments.ExpiredAppointmentsDeleter">
+        <constructor-arg ref="HibernateAppointmentRepository"/>
+        <constructor-arg ref="CancelAppointment"/>
+    </bean>
+
+    <bean id="addSerializedOffer" class="com.javeriana.web.project.Properties.Property.Application.AddSerializedOffer.AddSerializedOffer">
+        <constructor-arg ref="hibernatePropertyRepository"/>
+    </bean>
+
+
+
+    <bean id="addSerializedOfferOnOfferCreated" class="com.javeriana.web.project.Properties.Property.Infrastructure.DomainEventSubcribers.AddSerializedOfferOnOfferCreated">
+        <constructor-arg ref="addSerializedOffer"/>
+    </bean>
+
+    <bean id="deleteSerializedOffer" class="com.javeriana.web.project.Properties.Property.Application.DeleteSerializedOffer.DeleteSerializedOffer">
+        <constructor-arg ref="hibernatePropertyRepository"/>
+    </bean>
+
+    <bean id="deleteSerializedOfferOnOfferDeleted" class="com.javeriana.web.project.Properties.Property.Infrastructure.DomainEventSubcribers.DeleteSerializedOfferOnOfferDeleted">
+        <constructor-arg ref="deleteSerializedOffer"/>
+    </bean>
+
+    <bean id="updateSerializedOffer" class="com.javeriana.web.project.Properties.Property.Application.UpdateSerializedOffer.UpdateSerializedOffer">
+        <constructor-arg ref="hibernatePropertyRepository"/>
+    </bean>
+
+    <bean id="updateSerializedOfferOnOfferModified" class="com.javeriana.web.project.Properties.Property.Infrastructure.DomainEventSubcribers.UpdateSerializedOfferOnOfferModified">
+        <constructor-arg ref="updateSerializedOffer"/>
+    </bean>
+
+    <bean id="hibernateOfferRepository" class="com.javeriana.web.project.Properties.Offer.Infrastructure.Hibernate.HibernateOfferRepository"/>
+
+    <bean id="FilterOffers" class="com.javeriana.web.project.Properties.Offer.Application.filterOffers.FilterOffers">
+        <constructor-arg ref="hibernateOfferRepository"/>
+    </bean>
+
+    <bean id="HibernateQuestionRepository" class="com.javeriana.web.project.Questions.Question.Infrastructure.hibernate.HibernateQuestionRepository"/>
+
+    <bean id="offerCreator" class="com.javeriana.web.project.Properties.Offer.Application.CreateOffer.OfferCreator">
+        <constructor-arg ref="hibernateOfferRepository"/>
+        <constructor-arg ref="springApplicationEventBus"/>
+        <constructor-arg ref="propertyFinder"/>
+    </bean>
+
+    <bean id="offerDeleter" class="com.javeriana.web.project.Properties.Offer.Application.DeleteOffer.OfferDeleter">
+        <constructor-arg ref="hibernateOfferRepository"/>
+        <constructor-arg ref="springApplicationEventBus"/>
+    </bean>
+
+    <bean id="offerModifier" class="com.javeriana.web.project.Properties.Offer.Application.UpdateOffer.OfferModifier">
+        <constructor-arg ref="hibernateOfferRepository"/>
+        <constructor-arg ref="springApplicationEventBus"/>
+    </bean>
+
+    <bean id="offerFinder" class="com.javeriana.web.project.Properties.Offer.Application.FindOffer.OfferFinder">
+        <constructor-arg ref="hibernateOfferRepository"/>
+    </bean>
+
+    <bean id="SpringEmailSender" class="com.javeriana.web.project.Appointments.Appointment.Infrastructure.Email.SpringEmailSender"/>
+
+    <bean id="CancellationNotifier" class="com.javeriana.web.project.Appointments.Appointment.Application.Cancel.CancellationNotifier">
+        <constructor-arg ref="SpringEmailSender"/>
+    </bean>
+
+    <bean id="AppointmentNotifier" class="com.javeriana.web.project.Appointments.Appointment.Application.Assign.AppointmentNotifier">
+        <constructor-arg ref="SpringEmailSender"/>
+    </bean>
+
+    <bean id="cancelAppointment" class="com.javeriana.web.project.Appointments.Appointment.Application.Cancel.CancelAppointment">
+        <constructor-arg ref="HibernateAppointmentRepository"/>
+        <constructor-arg ref="CancellationNotifier"/>
+    </bean>
+
+    <bean id="AppointmentAssigner" class="com.javeriana.web.project.Appointments.Appointment.Application.Assign.AppointmentAssigner">
+        <constructor-arg ref="HibernateAppointmentRepository"/>
+        <constructor-arg ref="AppointmentNotifier"/>
+    </bean>
+    
+    <bean id="QuestionCreator" class="com.javeriana.web.project.Questions.Question.Application.CreateQuestion.QuestionCreator">
+        <constructor-arg ref="HibernateQuestionRepository"/>
+        <constructor-arg ref="springApplicationEventBus"/>
+    </bean>
+
+    <bean id="QuestionAnswerer" class="com.javeriana.web.project.Questions.Question.Application.AnswerQuestion.QuestionAnswerer">
+        <constructor-arg ref="HibernateQuestionRepository"/>
+        <constructor-arg ref="springApplicationEventBus"/>
+    </bean>
+
+    <bean id="findUnAnsweredQuestions" class="com.javeriana.web.project.Questions.Question.Application.UnAnsweredQuestions.FindUnAnsweredQuestions">
+        <constructor-arg ref="HibernateQuestionRepository"/>
+    </bean>
+
+
+    <bean id="AppointmentDomainFinder" class="com.javeriana.web.project.Appointments.Appointment.Domain.Services.AppointmentDomainFinder"/>
+
+    <bean id="CancelAppointment" class="com.javeriana.web.project.Appointments.Appointment.Application.Cancel.CancelAppointment">
+        <constructor-arg ref="HibernateAppointmentRepository"/>
+        <constructor-arg ref="CancellationNotifier"/>
+    </bean>
+
+    <bean id="FindAssignedAppointments" class="com.javeriana.web.project.Appointments.Appointment.Application.FindAssigned.FindAssignedAppointments">
+        <constructor-arg ref="HibernateAppointmentRepository"/>
+    </bean>
+
+    <bean id="CancelAppointmentOnEmployeeDeleted" class="com.javeriana.web.project.Appointments.Appointment.Infrastructure.DomainEventSubscribers.CancelAppointmentOnEmployeeDeleted">
+        <constructor-arg ref="CancelAppointment"/>
+        <constructor-arg ref="FindAssignedAppointments"/>
+    </bean>
+
+    <bean id="AddSerializedQuestion" class="com.javeriana.web.project.Properties.Property.Application.AddSerializedQuestion.AddSerializedQuestion">
+        <constructor-arg ref="hibernatePropertyRepository"/>
+    </bean>
+
+    <bean id="AddSerializedQuestionOnQuestionCreated" class="com.javeriana.web.project.Properties.Property.Infrastructure.DomainEventSubcribers.AddSerializedQuestionOnQuestionCreated">
+        <constructor-arg ref="AddSerializedQuestion"/>
+    </bean>
+
+    <bean id="UpdateSerializedQuestion" class="com.javeriana.web.project.Properties.Property.Application.UpdateSerializedQuestion.UpdateSerializedQuestion">
+        <constructor-arg ref="hibernatePropertyRepository"/>
+    </bean>
+
+    <bean id="UpdateSerializedQuestionOnQuestionCreated" class="com.javeriana.web.project.Properties.Property.Infrastructure.DomainEventSubcribers.UpdateSerializedQuestionOnQuestionModified">
+        <constructor-arg ref="UpdateSerializedQuestion"/>
+    </bean>
+
+</beans>

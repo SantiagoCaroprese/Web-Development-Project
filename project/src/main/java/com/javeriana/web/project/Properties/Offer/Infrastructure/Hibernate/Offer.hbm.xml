@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.javeriana.web.project.Properties.Offer.Domain.Offer" table="offers">
+        <composite-id name="offerId" class="com.javeriana.web.project.Properties.Offer.Domain.ValueObjects.OfferId" access="field">
+            <key-property name="value" column="id" access="field" length="36"/>
+        </composite-id>
+
+        <component name="propertyId" class="com.javeriana.web.project.Properties.Offer.Domain.ValueObjects.PropertyId" access="field">
+            <property name="value" column="property_id" access="field" type="string"/>
+        </component>
+
+        <component name="price" class="com.javeriana.web.project.Properties.Offer.Domain.ValueObjects.Price" access="field">
+            <property name="value" column="price" access="field" type="int"/>
+        </component>
+
+        <component name="action" class="com.javeriana.web.project.Properties.Offer.Domain.ValueObjects.Action" access="field">
+            <property name="value" column="action" access="field" type="string"/>
+        </component>
+        
+    </class>
+</hibernate-mapping>

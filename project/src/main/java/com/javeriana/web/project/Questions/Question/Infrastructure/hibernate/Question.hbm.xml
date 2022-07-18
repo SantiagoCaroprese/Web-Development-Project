@@ -1,0 +1,31 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.javeriana.web.project.Questions.Question.Domain.Question" table="questions">
+        <composite-id name="questionId" class="com.javeriana.web.project.Questions.Question.Domain.ValueObjects.QuestionId" access="field">
+            <key-property name="value" column="questionId" access="field" length="36"/>
+        </composite-id>
+
+        <component name="text" class="com.javeriana.web.project.Questions.Question.Domain.ValueObjects.Text" access="field">
+            <property name="value" column="text" access="field" type="string"/>
+        </component>
+
+        <component name="answer" class="com.javeriana.web.project.Questions.Question.Domain.ValueObjects.Answer" access="field">
+            <property name="value" column="answer" access="field" type="string"/>
+        </component>
+
+        <component name="date" class="com.javeriana.web.project.Questions.Question.Domain.ValueObjects.QuestionDate" access="field">
+            <property name="value" column="date" access="field" type="java.time.LocalDate"/>
+        </component>
+
+        <component name="propertyId" class="com.javeriana.web.project.Questions.Question.Domain.ValueObjects.PropertyId" access="field">
+            <property name="value" column="property_id" access="field" type="string"/>
+        </component>
+
+
+
+    </class>
+</hibernate-mapping>

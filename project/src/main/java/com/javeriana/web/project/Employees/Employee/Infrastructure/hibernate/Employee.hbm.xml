@@ -1,0 +1,32 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.javeriana.web.project.Employees.Employee.Domain.Employee" table="employees">
+        <composite-id name="employeeId" class="com.javeriana.web.project.Employees.Employee.Domain.ValueObjects.EmployeeId" access="field">
+            <key-property name="value" column="id" access="field" length="36"/>
+        </composite-id>
+
+        <component name="employeeEmail" class="com.javeriana.web.project.Employees.Employee.Domain.ValueObjects.EmployeeEmail" access="field">
+            <property name="value" column="email" access="field" type="string"/>
+        </component>
+
+        <component name="employeeFirstName" class="com.javeriana.web.project.Employees.Employee.Domain.ValueObjects.EmployeeFirstName" access="field">
+            <property name="value" column="first_name" access="field" type="string"/>
+        </component>
+
+        <component name="employeeLastName" class="com.javeriana.web.project.Employees.Employee.Domain.ValueObjects.EmployeeLastName" access="field">
+            <property name="value" column="last_name" access="field" type="string"/>
+        </component>
+
+        <component name="employeePassword" class="com.javeriana.web.project.Employees.Employee.Domain.ValueObjects.EmployeePassword" access="field">
+            <property name="value" column="password" access="field" type="string"/>
+        </component>
+
+        <component name="employeeIsAdministrator" class="com.javeriana.web.project.Employees.Employee.Domain.ValueObjects.EmployeeIsAdministrator" access="field">
+            <property name="value" column="is_administrator" access="field" type="boolean"/>
+        </component>
+    </class>
+</hibernate-mapping>

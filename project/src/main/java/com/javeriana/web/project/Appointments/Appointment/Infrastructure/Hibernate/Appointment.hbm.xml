@@ -1,0 +1,43 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.javeriana.web.project.Appointments.Appointment.Domain.Appointment" table="appointments">
+
+        <composite-id name="appointmentId" class="com.javeriana.web.project.Appointments.Appointment.Domain.ValueObjects.AppointmentId" access="field">
+            <key-property name="value" column="id" access="field" length="36"/>
+        </composite-id>
+
+        <property name="appointmentProperty" column="property" access="field">
+            <type name="com.javeriana.web.project.Appointments.Appointment.Infrastructure.Hibernate.AppointmentPropertyCustomType">
+            </type>
+        </property>
+
+        <component name="appointmentDateTime" class="com.javeriana.web.project.Appointments.Appointment.Domain.ValueObjects.AppointmentDateTime" access="field">
+            <property name="value" column="date_time" access="field" type="java.time.LocalDateTime"/>
+        </component>
+
+        <property name="assignedEmployee" column="assigned_employee" access="field">
+            <type name="com.javeriana.web.project.Appointments.Appointment.Infrastructure.Hibernate.AssignedEmployeeCustomType">
+            </type>
+        </property>
+
+        <component name="appointmentCustomerFirstName" class="com.javeriana.web.project.Appointments.Appointment.Domain.ValueObjects.AppointmentCustomerFirstName" access="field">
+            <property name="value" column="customer_first_name" access="field" type="string"/>
+        </component>
+
+        <component name="appointmentCustomerLastName" class="com.javeriana.web.project.Appointments.Appointment.Domain.ValueObjects.AppointmentCustomerLastName" access="field">
+            <property name="value" column="customer_last_name" access="field" type="string"/>
+        </component>
+
+        <component name="appointmentCustomerEmail" class="com.javeriana.web.project.Appointments.Appointment.Domain.ValueObjects.AppointmentCustomerEmail" access="field">
+            <property name="value" column="customer_email" access="field" type="string"/>
+        </component>
+
+        <component name="appointmentCustomerPhoneNumber" class="com.javeriana.web.project.Appointments.Appointment.Domain.ValueObjects.AppointmentCustomerPhoneNumber" access="field">
+            <property name="value" column="customer_phone_number" access="field" type="string"/>
+        </component>
+    </class>
+</hibernate-mapping>
